@@ -12,6 +12,11 @@ body {
 header,footer,section,article {
 	display: block;
 }
+
+#title {
+	margin-bottom: 20px;
+	font-style: italic;
+}
 #content {
 }
 #by {
