@@ -1,5 +1,4 @@
 title: Rails 2.3, cache_fu and memcached session_store
-author: Jose Fernandez
 date: 2010/04/14
 
 Many Rails developers mistakenly assume that by installing defunkt's [cache_fu](http://github.com/defunkt/cache_fu "cache_fu repository at Github"), Rails will be configured to use the settings found in the memcached.yml config YAML installed by the plugin. This was somehow true in earlier versions of Rails 2.*, but a couple of extra steps are required for 2.3.

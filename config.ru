@@ -8,16 +8,11 @@ if ENV['RACK_ENV'] == 'development'
   use Rack::ShowExceptions
 end
 
-#
-# Create and configure a toto instance
-#
 toto = Toto::Server.new do
-  #
-  # Add your settings here
-  # set [:setting], [value]
-  # 
   set :author, "Jose Fernandez"
   set :title, "Production Hacks"
+  set :url, "http://www.production-hacks.com"
+  set :ext, "markdown"
   # set :root,      "index"                                   # page to load on /
   # set :date,      lambda {|now| now.strftime("%d/%m/%Y") }  # date format for articles
   # set :markdown,  :smart                                    # use markdown + smart-mode
