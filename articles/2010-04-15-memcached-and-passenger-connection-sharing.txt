@@ -1,0 +1,11 @@
+--- 
+title: Memcached and Passenger connection sharing
+date: 15/04/2010
+
+One of the few gotchas for Passenger's smart/smart-lv2 spawning methods is the unintentional sharing of file descriptors between workers.  This is actually documented at the very bottom of the [Passenger docs](http://www.modrails.com/documentation/Users%20guide.html#_example_1_memcached_connection_sharing_harmful), but you don't really understand the impact of it until it starts wreaking havoc on a highly cached production application.
+
+We started by getting random Memcache IO timeout errors, which we initially thought were caused by the strain on the server and Memcached running out of memory.  Then the Rails session manager would receive random cached ActiveRecord objects instead of the session hash (we store our sessions in Memcached).
+
+This last error lead me into the right direction and I found similar issues posted on the web.  The problems were caused by having all Passenger workers share the same memcache-client connection.  They had to be reset when spawned to avoid clashing of cached objects as they get fetched.  Putting the following code in your environment.rb file should take care of this:
+
+<script src="http://gist.github.com/366768.js?file=environment.rb"></script>
