@@ -6,7 +6,7 @@ Many Rails developers mistakenly assume that by installing defunkt's [cache_fu](
 
 [Tim Connor's](http://github.com/timocratic) branch has a [commit](http://github.com/timocratic/cache_fu/commit/bbfee8ecbb4f5676f047f5b34c58a12ded13e8d2) that correctly sets the session_store config in Rails 2.3.  I applied Tim's patch to the most recent version of cache_fu:
 
-http://github.com/jfernandez/cache_fu
+[http://github.com/jfernandez/cache_fu](http://github.com/jfernandez/cache_fu)
 
 If you're also using Rails abstract cache_store (Rails.cache) and you want it to use the same settings as cache_fu, you will have to use the [MemcachedConfig](http://github.com/colinsurprenant/memcached-config/) class. Just drop the class file in your RAILS_ROOT/lib folder and add the following code to your environment.rb file (or production.rb)
 
