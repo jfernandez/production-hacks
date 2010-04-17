@@ -1,6 +1,8 @@
 require 'toto'
 require 'rack-rewrite'
 
+DOMAIN = 'www.production-hacks.com'
+
 # Rack config
 use Rack::Static, :urls => ['/css', '/js', '/images', '/favicon.ico'], :root => 'public'
 use Rack::CommonLogger
@@ -10,6 +12,11 @@ if ENV['RACK_ENV'] == 'development'
 end
 
 use Rack::Rewrite do
+  # Redirect to the www version of the domain
+  r301 %r{.*}, "http://#{DOMAIN}$&", :if => Proc.new {|rack_env|
+    rack_env['SERVER_NAME'] != DOMAIN
+  }
+  
   # 301 for tumblr
   r301 %r{/post/522050660/.*}, "/2010/04/14/rails-23-cachefu-and-memcached-sessionstore/"
 end
