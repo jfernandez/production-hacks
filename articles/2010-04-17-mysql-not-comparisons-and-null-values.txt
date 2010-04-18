@@ -1,0 +1,11 @@
+--- 
+title: MySQL NOT Comparisons and NULL values
+date: 17/04/2010
+
+If you're using any of the MySQL NOT logical operators (NOT IN (?), <>, !=) on a column, you should be aware that all records that have a NULL column value will always be **excluded** by MySQL.
+
+What if you do want to include the NULL value records? You could try something like this:
+
+<code>
+  SELECT * FROM books WHERE author_id IS NULL OR author_id != 123
+</code>

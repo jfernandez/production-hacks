@@ -14,7 +14,7 @@ end
 use Rack::Rewrite do
   # Redirect to the www version of the domain
   r301 %r{.*}, "http://#{DOMAIN}$&", :if => Proc.new {|rack_env|
-    rack_env['SERVER_NAME'] != DOMAIN
+    rack_env['SERVER_NAME'] != DOMAIN && ENV['RACK_ENV'] != "development"
   }
   
   # 301 for tumblr
