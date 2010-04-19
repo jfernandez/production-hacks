@@ -7,8 +7,13 @@ DOMAIN = 'www.production-hacks.com'
 use Rack::Static, :urls => ['/css', '/js', '/images', '/favicon.ico', '/robots.txt'], :root => 'public'
 use Rack::CommonLogger
 
-if ENV['RACK_ENV'] == 'development'
+case ENV['RACK_ENV']
+when "development"
   use Rack::ShowExceptions
+when "production"
+  ENV['APP_ROOT'] ||= File.dirname(__FILE__)
+  $:.unshift "#{ENV['APP_ROOT']}/vendor/plugins/newrelic_rpm/lib"
+  require 'newrelic_rpm'
 end
 
 use Rack::Rewrite do
