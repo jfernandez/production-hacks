@@ -17,10 +17,6 @@ else
   
   module Toto
     class Server
-      def call(env)
-        super
-      end
-
       include NewRelic::Agent::Instrumentation::Rack
     end
   end
