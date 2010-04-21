@@ -1,0 +1,15 @@
+--- 
+title: toto and New Relic RPM
+date: 20/04/2010
+
+This blog is powered by [toto](http://cloudhead.io/toto), a minimalistic Ruby blogging engine.  It's currently hosted on the [Heroku](http://www.heroku.com) free plan, which is more than enough for now, but I wanted to know when would be a good time crank up the [dynos](http://heroku.com/how/dynos).  Heroku allows you to setup the free version New Relic RPM as an addon, but you will have to follow a couple of extra steps to get toto's requests to show up in New Relic.
+
+First make sure you have added the New Relic RPM addon for Heroku.  If you're not using Heroku or you want you use your own New Relic account, add your newrelic.yml config to the APP_ROOT/config folder.
+
+Checkout the [newrelic_rpm](http://newrelic.rubyforge.org/svn/newrelic_rpm/) gem in the vendor/plugins folder.
+
+Finally, add the following code to your **config.ru** file (before the toto config block):
+
+<script src="http://gist.github.com/373436.js?file=config.ru"></script>
+
+The last part of the snippet monkey-patches toto's Site#call method to report back to New Relic on each request.
