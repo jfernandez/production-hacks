@@ -18,7 +18,7 @@ else
   module Toto
     class Site
       include NewRelic::Agent::Instrumentation::ControllerInstrumentation
-      add_transaction_tracer :go, :route => '#{args[0].to_s}'
+      add_transaction_tracer :go, :name => '#{args[0].to_s}'
     end
   end
 end
