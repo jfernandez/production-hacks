@@ -13,11 +13,12 @@ else
   ENV['APP_ROOT'] ||= File.dirname(__FILE__)
   $:.unshift "#{ENV['APP_ROOT']}/vendor/plugins/newrelic_rpm/lib"
   require 'newrelic_rpm'
-  require 'new_relic/agent/instrumentation/rack'
+  require 'new_relic/agent/instrumentation/controller_instrumentation'
   
   module Toto
-    class Server
-      include NewRelic::Agent::Instrumentation::Rack
+    class Site
+      include NewRelic::Agent::Instrumentation::ControllerInstrumentation
+      add_transaction_tracer :go, :route => '#{args[0].to_s}'
     end
   end
 end
