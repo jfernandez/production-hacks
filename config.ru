@@ -7,13 +7,23 @@ DOMAIN = 'www.production-hacks.com'
 use Rack::Static, :urls => ['/css', '/js', '/images', '/favicon.ico', '/robots.txt'], :root => 'public'
 use Rack::CommonLogger
 
-case ENV['RACK_ENV']
-when "development"
-  use Rack::ShowExceptions
-when "production"
+if ENV['RACK_ENV'] == "development"
+  use Rack::ShowExceptions  
+else
   ENV['APP_ROOT'] ||= File.dirname(__FILE__)
   $:.unshift "#{ENV['APP_ROOT']}/vendor/plugins/newrelic_rpm/lib"
   require 'newrelic_rpm'
+  require 'new_relic/agent/instrumentation/rack'
+  
+  module Toto
+    class Server
+      def call(env)
+        super
+      end
+
+      include NewRelic::Agent::Instrumentation::Rack
+    end
+  end
 end
 
 use Rack::Rewrite do
