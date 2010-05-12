@@ -1,0 +1,11 @@
+--- 
+title: Engine Yard Cloud, New Relic and Hoptoad deploy notifications
+date: 12/05/2010
+
+[Engine Yard's Cloud](http://www.engineyard.com/products/cloud) platform uses the [chef-deploy](http://github.com/ezmobius/chef-deploy) gem instead of the more commonly used Capistrano to deploy your Rails app.  Both New Relic and Hoptoad have a built in Capistrano task to notify the services on deploy.  Using a deploy hook we can achieve the same result with EY-Cloud.
+
+Create the following file in "RAILS_ROOT/deploy/after_restart.rb"
+
+<script src="http://gist.github.com/398600.js?file=after_restart.rb"></script>
+
+The above deploy hook will only fire off when you're deploying to a production environment.  If you're using [bundler08](http://github.com/carlhuda/bundler/tree/v0.8) instead of Engine Yard's gem manager, then replace the "newrelic_cmd" with "bin/newrelic_cmd".
