@@ -1,5 +1,3 @@
-rails -v 2.3.5
-pg
 builder       --source=http://gemcutter.org
 rack-rewrite  --source=http://gemcutter.org
 rdiscount     --source=http://gemcutter.org
