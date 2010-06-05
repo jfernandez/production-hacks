@@ -1,0 +1,7 @@
+--- 
+title: Domain redirect using rack-rewrite
+date: 05/06/2010
+
+Stick this snippet in at the top of the "config.ru" file of your Rack app (Rails, Sinatra) to always redirect visitors to the 'www' version of your domain name ([rack-rewrite](http://github.com/jtrupiano/rack-rewrite) gem required):
+
+<script src="http://gist.github.com/426802.js?file=config.ru"></script>
