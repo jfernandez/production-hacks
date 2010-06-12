@@ -1,0 +1,9 @@
+--- 
+title: Passenger 2.2.14 with bundler08
+date: 11/06/2010
+
+Passenger 2.2.14 now comes with built in Bundler support for Rails 3, but some Rails 2 apps might have explicitly added Bundler support in the "config/preinitializer.rb" file.
+
+To stop Passenger from setting up Bundler (and crashing in the process), just create the "config/setup_load_paths.rb" file and copy your "config/preinitializer.rb" content in there.  Passenger will now detect the file and require it instead of running its Bundler setup.
+
+Make sure to keep both files around too make the app backwards compatible with earlier versions of Passenger (for EY-Cloud support).
