@@ -1,0 +1,49 @@
+--- 
+title: Redis API access logger
+date: 10/07/2010
+
+We just launched a REST API for our production Rails app and we wanted to keep track of the API usage by user.  Inserting a row into MySQL or incrementing an existing counter on every request had inevitable scaling issues. We needed something lightweight and fast, Redis was a perfect candidate for the job.
+
+Redis has to keep all stored objects in memory, so just putting all data in there and forgetting about it was out of the question.  We decided to only keep a few days of data in Redis and archive the results to MySQL.  Daily API usage stats would be served directly by Redis, archived results on date ranges would be fetched from MySQL.
+
+Assuming a User with ID 1337 hits the UsersController #update API call on July 10, 2010 - the process would go like this:
+
+Increment a Sorted Set of daily "Controller#Action" values by 1 (the hit count):
+
+`ZINCRBY 'api:requests:2010-07-10' 1 'users#update'`
+
+Increment a Sorted Set of daily "Controller#Action" values by User ID:
+
+`ZINCRBY 'api:requests:2010-06-30:users#update' 1 1337`
+
+Add the current date to a Set of dates for which we're currently tracking data:
+
+`SADD api:requests:dates '2010-07-10'`
+
+We are now able to pull a list of Controller#Action values by date, sorted by the hit count (ZSCORE).
+
+`controller_actions = ZREVRANGE 'api:requests:2010-07-10' 0, -1`
+
+`hit_count = ZSCORE 'api:requests:2010-07-10' 'users#update'`
+
+Then using the Controller#Action value, generate a key to pull a list of User IDs that have accessed that action, also sorted by their hit count (ZSCORE).
+
+`user_ids = ZREVRANGE 'api:requests:2010-07-10:users#update' 0, -1`
+
+`hit_count = ZSCORE 'api:requests:2010-07-10:users#update' 1337`
+
+Finally we archive our daily results to a MySQL table with the following schema:
+
+`date | user_id | controller | action | hit_count`
+
+On a daily cron, we iterate through the Set of archived dates (skipping the current date) and generate the keys needed to pull the API usage stats from Redis.  Once we've inserted the daily results into MySQL, we can safely delete the daily Sorted Sets and remove the date from the Set:
+
+`dates = SMEMBERS 'api:requests:dates'`
+
+... repeat the steps above to pull the usage stats by date, controller#action and user ID ...
+
+`DEL 'api:requests:2010-07-10`
+
+`DEL 'api:requests:2010-07-10:users#update'`
+
+`SREM 'api:requests:dates' '2010-07-10'`
