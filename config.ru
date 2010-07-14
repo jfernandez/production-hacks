@@ -1,7 +1,7 @@
 require 'toto'
 require 'rack-rewrite'
 
-DOMAIN = 'www.production-hacks.com'
+DOMAIN = 'www.productionhacks.com'
 
 # Rack config
 use Rack::Static, :urls => ['/css', '/js', '/images', '/favicon.ico', '/robots.txt'], :root => 'public'
