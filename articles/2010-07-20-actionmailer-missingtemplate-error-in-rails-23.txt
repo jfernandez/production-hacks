@@ -1,0 +1,11 @@
+--- 
+title: ActionMailer MissingTemplate error in Rails 2.3
+date: 20/07/2010
+
+In Rails 2.3, if you're using implicit multipart emails for your ActionMailer views (the content type is part of the file name), ActionMailer will have problems locating the correct template during tests and background jobs. I ran into this problem when setting up background emailing with [resque_mailer](http://github.com/zapnap/resque_mailer "resque mailer").
+
+`ActionView::MissingTemplate: Missing template my_mailer/mailer_action.erb in view path app/views`
+
+This is a known and [documented bug](https://rails.lighthouseapp.com/projects/8994/tickets/2263-rails-232-breaks-implicit-multipart-actionmailer-tests "lighhouse ticket"), but the [patch](http://github.com/rails/rails/commit/97e07a88feaf334d7eaa44f66bcd57c08cd587a6 "patch") went in after the 2.3.5 release.  Adding the following code to a Rails initializer should fix the problem:
+
+<script src="http://gist.github.com/482599.js"> </script>
