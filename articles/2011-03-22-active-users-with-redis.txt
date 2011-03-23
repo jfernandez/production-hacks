@@ -14,7 +14,7 @@ Logging
 
 We insert the user’s ID as a member of the <span style="color:#FF6600">'active-users'</span> Sorted Set, using the timestamp as the score.
 
-**ZADD** <span style="color:#FF6600">'active-users'</span>, <span style="color:blue">1300803419</span>, <span style="color:green">123</span>
+**ZADD** <span style="color:#FF6600">'active-users'</span> <span style="color:blue">1300803419</span> <span style="color:green">123</span>
 
 If <span style="color:green">123</span> was already a member of the Sorted Set, Redis would **only update** the score to the new timestamp, effectively setting the user's last action timestamp.
 
@@ -29,7 +29,7 @@ If you want to display the active users in the last 15 minutes, you will first n
 
 Then return a range of members in the <span style="color:#FF6600">'active-users'</span> Sorted Set using these timestamps as the min and max scores.
 
-`user_ids` = **ZRANGEBYSCORE** <span style="color:#FF6600">'active-users'</span>, `timestamp1`, `timestamp2`
+`user_ids` = **ZRANGEBYSCORE** <span style="color:#FF6600">'active-users'</span> `timestamp1` `timestamp2`
 
 The returned array will contain the user ID’s of all users active in the last 15 minutes.
 
