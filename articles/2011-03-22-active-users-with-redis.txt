@@ -2,7 +2,7 @@
 title: Active Users with Redis
 date: 22/03/2011
 
-Want to log and display the active users in your web application? Enjoy using Redis? Read on.
+Want to log and display the active users in your web application? Enjoy using Redis? Read on.~
 
 Scenario
 --------
