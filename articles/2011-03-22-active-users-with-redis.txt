@@ -1,0 +1,38 @@
+--- 
+title: Active Users with Redis
+date: 22/03/2011
+
+Want to log and display the active users in your web application? Enjoy using Redis? Read on.
+
+Scenario
+--------
+
+A user with ID <span style="color:green">123</span> hits our web application.  The unix timestamp (seconds since epoch) for the current date and time is: <span style="color:blue">1300803419</span>.
+
+Logging
+-------
+
+We insert the user’s ID as a member of the <span style="color:#FF6600">'active-users'</span> Sorted Set, using the timestamp as the score.
+
+**ZADD** <span style="color:#FF6600">'active-users'</span>, <span style="color:blue">1300803419</span>, <span style="color:green">123</span>
+
+If <span style="color:green">123</span> was already a member of the Sorted Set, Redis would **only update** the score to the new timestamp, effectively setting the user's last action timestamp.
+
+Display
+-------
+
+If you want to display the active users in the last 15 minutes, you will first need to generate 2 timestamps.
+
+`timestamp1` = 15 minutes ago
+
+`timestamp2` = current date and time
+
+Then return a range of members in the <span style="color:#FF6600">'active-users'</span> Sorted Set using these timestamps as the min and max scores.
+
+`user_ids` = **ZRANGEBYSCORE** <span style="color:#FF6600">'active-users'</span>, `timestamp1`, `timestamp2`
+
+The returned array will contain the user ID’s of all users active in the last 15 minutes.
+
+That’s it.
+
+What I like about this approach is that it’s simple and lightweight; only 1 entry in the Sorted Set per user.  You can also query “active users in the last X minutes/days/months” up to the date when you began logging the requests.
