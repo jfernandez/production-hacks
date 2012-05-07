@@ -18,7 +18,7 @@ This is what I did differently:
 
 6. *Most important of all*: I hid my old IDE, started a new small project and forced myself to use Vim.
 
-Then it hit me. The power behind Vim is the .vimrc file. Not the movement and editing shortcuts that people rave about. Once you realize that you can bend and shape Vim to your will, way beyond what any other IDE would allow, you cant't go back.
+Then it hit me. The power behind Vim is the .vimrc file. Not the movement and editing shortcuts that people rave about. Once you realize that you can bend and shape Vim to your will, way beyond what any other IDE would allow, you can't go back.
 
 Want a crazy example of the stuff you can do with Vim? Drop this in your .vimrc file and anytime you save a file Vim will submit a POST request to a URL with the file name:  
 <script src="https://gist.github.com/2626144.js"> </script>
