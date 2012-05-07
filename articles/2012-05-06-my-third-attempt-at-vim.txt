@@ -6,9 +6,11 @@ I've tried switching to Vim three times.  The first time I was overwhelmed by th
 
 This is what I did differently:
 
+0. I refreshed my Vim knowledge with $ [vimtutor](http://linuxcommand.org/man_pages/vimtutor1.html).
+
 1. I bought [Practical Vim](http://pragprog.com/book/dnvim/practical-vim).
 
-2. I started with an empty [.vimrc](https://github.com/jfernandez/.vim/blob/master/vimrc) file (it has grown since then). 
+2. I started with an empty [.vimrc](https://github.com/jfernandez/.vim/blob/master/vimrc) file (it has grown since then) and zero plugins.
 
 3. I went through a coworker's .vimrc file and looked up what each setting did. Only then did I copy it over to mine.
 
