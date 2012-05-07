@@ -2,7 +2,7 @@
 title: My Third Attempt at Vim
 date: 06/05/2012
 
-I've tried teaching myself Vim three times.  The first time I was overwhelmed by the [Janus](https://github.com/carlhuda/janus) distribution and gave up. The second time I was also starting a new job and felt I wasn't getting enough traction. The third time it stuck.~
+I've tried switching to Vim three times.  The first time I was overwhelmed by the [Janus](https://github.com/carlhuda/janus) distribution and gave up. The second time I was also starting a new job and felt I wasn't getting enough traction. The third time it stuck.~
 
 This is what I did differently:
 
