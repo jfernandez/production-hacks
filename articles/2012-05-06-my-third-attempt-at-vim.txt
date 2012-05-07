@@ -1,0 +1,24 @@
+--- 
+title: My Third Attempt at Vim
+date: 06/05/2012
+
+I've tried teaching myself Vim three times.  The first time I was overwhelmed by the [Janus](https://github.com/carlhuda/janus) distribution and gave up. The second time I was also starting a new job and felt I wasn't getting enough traction. The third time it stuck.
+
+This is what I did differently:
+
+1. I bought [Practical Vim](http://pragprog.com/book/dnvim/practical-vim).
+
+2. I started with an empty [.vimrc](https://github.com/jfernandez/.vim/blob/master/vimrc) file (it has grown since then). 
+
+3. I went through a coworker's .vimrc file and looked up what each setting did. Only then did I copy it over to mine.
+
+4. I used [pathogen](https://github.com/tpope/vim-pathogen) to manage my plugins.
+
+5. I watched the [Destroy All Software](https://www.destroyallsoftware.com/screencasts/catalog) Vim screencasts.
+
+6. *Most important of all*: I hid my old IDE, started a new small project and forced myself to use Vim.
+
+Then it hit me. The power behind Vim is the .vimrc file. Not the movement and editing shortcuts that people rave about. Once you realize that you can bend and shape Vim to your will, way beyond what any other IDE would allow, you cant't go back.
+
+Want a crazy example of the stuff you can do with Vim? Drop this in your .vimrc file and anytime you save a file Vim will submit a POST request to a URL with the file name:  
+<script src="https://gist.github.com/2626144.js"> </script>
