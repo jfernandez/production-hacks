@@ -11,6 +11,7 @@ GEM
   remote: https://rubygems.org/
   specs:
     builder (3.0.0)
+    newrelic_rpm (3.3.4.1)
     rack (1.4.1)
     rack-rewrite (1.2.1)
     rdiscount (1.6.8)
@@ -20,6 +21,7 @@ PLATFORMS
 
 DEPENDENCIES
   builder
+  newrelic_rpm
   rack-rewrite
   rdiscount
   toto!
