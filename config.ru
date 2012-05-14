@@ -12,16 +12,16 @@ use Rack::CommonLogger
 if ENV['RACK_ENV'] == "development"
   use Rack::ShowExceptions  
 else
-  ENV['APP_ROOT'] ||= File.dirname(__FILE__)
-  $:.unshift "#{ENV['APP_ROOT']}/vendor/plugins/newrelic_rpm/lib"
-  require 'newrelic_rpm'
-  require 'new_relic/agent/instrumentation/rack'
+  #ENV['APP_ROOT'] ||= File.dirname(__FILE__)
+  #$:.unshift "#{ENV['APP_ROOT']}/vendor/plugins/newrelic_rpm/lib"
+  #require 'newrelic_rpm'
+  #require 'new_relic/agent/instrumentation/rack'
   
-  module Toto
-    class Server
-      include NewRelic::Agent::Instrumentation::Rack
-    end
-  end
+  #module Toto
+    #class Server
+      #include NewRelic::Agent::Instrumentation::Rack
+    #end
+  #end
 end
 
 use Rack::Rewrite do
