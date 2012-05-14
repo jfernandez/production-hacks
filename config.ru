@@ -11,8 +11,6 @@ end
 use Rack::Static, :urls => ['/css', '/js', '/images', '/favicon.ico', '/robots.txt'], :root => 'public'
 use Rack::CommonLogger
 
-NewRelic::Agent.manual_start :app_name => 'Production Hacks', :agent_enabled => true
-
 require 'new_relic/agent/instrumentation/rack'
 module Toto
   class Server
