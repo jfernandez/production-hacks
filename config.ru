@@ -1,5 +1,7 @@
-require 'toto'
-require 'rack-rewrite'
+require 'rubygems'
+require 'bundler'
+
+Bundler.require
 
 DOMAIN = 'www.productionhacks.com'
 

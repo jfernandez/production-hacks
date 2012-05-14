@@ -1,0 +1,25 @@
+GIT
+  remote: git://github.com/cloudhead/toto.git
+  revision: 7af9a057ad422c591ff2b70fbd425d50dffb0ebc
+  specs:
+    toto (0.4.9)
+      builder
+      rack
+      rdiscount
+
+GEM
+  remote: https://rubygems.org/
+  specs:
+    builder (3.0.0)
+    rack (1.4.1)
+    rack-rewrite (1.2.1)
+    rdiscount (1.6.8)
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  builder
+  rack-rewrite
+  rdiscount
+  toto!
