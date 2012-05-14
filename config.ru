@@ -11,17 +11,19 @@ end
 use Rack::Static, :urls => ['/css', '/js', '/images', '/favicon.ico', '/robots.txt'], :root => 'public'
 use Rack::CommonLogger
 
-NewRelic::Agent.manual_start :app_name => 'Production Hacks', :agent_enabled => true
-
-require 'new_relic/agent/instrumentation/rack'
-module Toto
-  class Server
-    include NewRelic::Agent::Instrumentation::Rack
-  end
-end
-
 if ENV['RACK_ENV'] == "development"
   use Rack::ShowExceptions  
+else
+  #ENV['APP_ROOT'] ||= File.dirname(__FILE__)
+  #$:.unshift "#{ENV['APP_ROOT']}/vendor/plugins/newrelic_rpm/lib"
+  #require 'newrelic_rpm'
+  #require 'new_relic/agent/instrumentation/rack'
+  
+  #module Toto
+    #class Server
+      #include NewRelic::Agent::Instrumentation::Rack
+    #end
+  #end
 end
 
 use Rack::Rewrite do
