@@ -3,7 +3,9 @@ require 'bundler'
 
 Bundler.require
 
-DOMAIN = 'www.productionhacks.com'
+unless Object.const_defined?(:DOMAIN)
+  DOMAIN = 'www.productionhacks.com'
+end
 
 # Rack config
 use Rack::Static, :urls => ['/css', '/js', '/images', '/favicon.ico', '/robots.txt'], :root => 'public'
