@@ -1,0 +1,15 @@
+---
+title: We have one hour to ship
+date: 04/01/2013
+
+We sat hunched over a laptop in a well-lit room. I explained the programming challenge without looking away from the computer screen. From the corner of my eye, I saw the candidate nodding along. Then I turned to him, slid the laptop over, and smiled as I said, "We have one hour to ship a solution to this problem. You drive".
+
+This is how I interview software developers. After experimenting with different styles and techniques, I have found that simulating an hour of real work will give me the best feedback on a candidate. But most important of all, it answers my main questions:
+
+* 1) Can they work as a team?
+* 2) Can they get things done?
+* 3) Skill wise, where are they now and where can I take them?
+
+In my experience, questions 1 and 2 are rarely answered during an interview cycle. It shouldn't have to be that way. Invest an hour and get the surprises out the way.
+
+After all, what better way to find out if they can do the job than actually doing it?
