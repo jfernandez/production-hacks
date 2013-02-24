@@ -1,6 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html lang='en-US' xml:lang='en-US' xmlns='http://www.w3.org/1999/xhtml'>
   <head>
+    <%= ::NewRelic::Agent.browser_timing_header rescue "" %>
 		<title><%= title %></title>
 		<meta content='text/html; charset=utf-8' http-equiv='Content-Type' />
 		<meta content='ruby, rails, ruby on rails, mysql, software development, production, memcached, cache_fu, web application, redis, cloud' name='keywords' />
@@ -8,10 +9,10 @@
 		<meta content='Production Hacks: Software Development tips from a battle hardened cloud application. (MySQL, Ruby on Rails, memcached, Redis, Amazon EC2)' name='description' />
 		<meta name="google-site-verification" content="g5tzJVQ7r7kluf7E0DNgdLS5hjs1AVgnhprpALs8f_Y" />
 		<meta name="google-site-verification" content="YwPzqMJZzcA6vnzd199ZVA0XSazzxFu6KHMEocjTD6E" />
-		
+
     <link rel="stylesheet" type="text/css" href="/css/main.css">
     <link rel="alternate" type="application/atom+xml" title="<%= title %> - feed" href="http://feeds.feedburner.com/productionhacks" />
-    
+
     <script type="text/javascript">
       var _gaq = _gaq || [];
       _gaq.push(['_setAccount', 'UA-15863832-3']);
@@ -31,12 +32,13 @@
       <a href="/">Production Hacks</a>
     </div>
     <section>
-      <%= yield %> 
+      <%= yield %>
     </section>
     <footer>
       <a href="/about">About the Author</a>
       |
       <a href="http://feeds.feedburner.com/productionhacks" rel="alternate" type="application/rss+xml"><img src="http://www.feedburner.com/fb/images/pub/feed-icon16x16.png" alt="" style="vertical-align:middle;border:0"/></a>&nbsp;<a href="http://feeds.feedburner.com/productionhacks" rel="alternate" type="application/rss+xml">Subscribe in a reader</a>
     </footer>
+    <%= ::NewRelic::Agent.browser_timing_footer rescue "" %>
   </body>
 </html>
